@@ -55,7 +55,7 @@
 	}
 	
 	.ui-table-disabled { 
-			}
+	}
 	
 	.ui-table-controls {
 		span {
@@ -115,7 +115,8 @@
 		} 
 	
 		.ui-table-control-disabled { 
-			img { 
+			.arrow-left,
+            .arrow-right { 
 				opacity: 0.5;
 			}
 		}
@@ -130,7 +131,7 @@
 			border-radius: 10px;
 			padding: 4px 10px 4px 25px;
 			border: 2px solid #ccc;
-			background-image: url(../images/search.png); 
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABIUlEQVQ4y2NgQAJbt261AuKVQPwciP8C8Wsg3gjEHgz4wI4dO5iAivqB+D8UgzS/BOLfSGJLt23bxobVAKBkL1TReyDO2L59Ox9IHEhzAPlRQPwUKr8cm2YTqI3vgTZoYbMAKC4DlH8MNcQH3YC5UIkCfN4EyodB1W1Hl7gJkgA6VwyfATt37mQDqvsOxJ/RDXgLCiwGIgBQ3UOQZbt27eLAcAHQnxLkumA21G9FBGyPgKrbii5hAI2Fj0BX6OGIBQVo4vqPNVEBBduhkh+BOA+YsIRA4kCaB8hPgiYqkPxnoGFKGAYAAwWUEjuhLvmPZBgy/zuUfojVEKhLQIlqMTS0v0NT4GogdoLKvSdoCIGARDdEgVJD1pNsAJIhu4FYAACcaFAsyZ/F1AAAAABJRU5ErkJggg==");
 			background-position: 5px center; 
 			background-repeat: no-repeat; 
 			
@@ -146,4 +147,21 @@
 			
 	}
 
+    .arrow-left {
+        display: block;
+        width: 16px;
+        width: 16px;
+        height: 16px;
+        background-repeat: no-repeat;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AYQCjUOTdd5egAAAD9QTFRFAAAAPj4+Nzc3NjY2NTU1NDQ0NTU1NDQ0NDQ0MzMzNDQ0MzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz////emlW5gAAABN0Uk5TAAIKEhwmNkZYbJOVp7nJ2eXt9WodbeEAAAABYktHRBSS38k1AAAAR0lEQVQY02NgQAKsXMg8BkZOIT5kPguvsDCyAIegMLIAM4+wMLIAu4AwsgATt7AwsgAbvzABAQwtmIZisRbTYVicjuk5qPcBnXEG5VmQzsYAAAAASUVORK5CYII=");
+    }
+
+    .arrow-right {
+        display: block;
+        width: 16px;
+        width: 16px;
+        height: 16px;
+        background-repeat: no-repeat;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAbklEQVQ4y2NggAITE5PJQKzGQC4wNjY+CcRfgTjHzs6OiVwD/kPxTlNTUxlKDADht0AvRVBiAAwvNzMzE6LEABB+CnSNGyUGwPBUc3NzLkoMAOGbwAA2GzADyPYCRYFIdjRSlJDITsrkZyZyszMAYcahC/LTjs4AAAAASUVORK5CYII=");
+    }
 }

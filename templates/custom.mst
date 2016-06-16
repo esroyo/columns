@@ -19,7 +19,7 @@
 		<thead>
 			{{#headers}} 
 				{{#sortable}}
-					<th class="ui-table-sortable" data-columns-sortby="{{key}}">{{header}}</th>
+					<th class="ui-table-sortable" data-columns-sortby="{{sortKey}}">{{header}}</th>
 				{{/sortable}}
 				
 				{{#notSortable}}
@@ -27,11 +27,11 @@
 				{{/notSortable}}
 				
 				{{#sortedUp}}
-					<th class="ui-table-sort-up ui-table-sortable" data-columns-sortby="{{key}}">{{header}} <span class="ui-arrow">&#x25B2;</th>
+					<th class="ui-table-sort-up ui-table-sortable" data-columns-sortby="{{sortKey}}">{{header}} <span class="ui-arrow">&#x25B2;</th>
 				{{/sortedUp}}
 				
 				{{#sortedDown}}
-					<th class="ui-table-sort-down ui-table-sortable" data-columns-sortby="{{key}}">{{header}} <span class="ui-arrow">&#x25BC;</th>
+					<th class="ui-table-sort-down ui-table-sortable" data-columns-sortby="{{sortKey}}">{{header}} <span class="ui-arrow">&#x25BC;</th>
 				{{/sortedDown}}	
 			{{/headers}}	
 		</thead>
@@ -58,25 +58,25 @@
 		<span class="ui-table-controls">
 			{{#prevPageExists}}	
 				<span class="ui-table-control-prev" data-columns-page="{{prevPage}}">
-					<img src="images/arrow-left.png">
+					<span class="arrow-left"></span>
 				</span>
 			{{/prevPageExists}}
 			
 			{{^prevPageExists}}
 				<span class="ui-table-control-disabled">
-					<img src="images/arrow-left.png">
+					<span class="arrow-left"></span>
 				</span>
 			{{/prevPageExists}} 			
 			
 			{{#nextPageExists}}
 				<span class="ui-table-control-next" data-columns-page="{{nextPage}}">
-					<img src="images/arrow-right.png">
+					<span class="arrow-right"></span>
 				</span>
 			{{/nextPageExists}}
 			
 			{{^nextPageExists}}
 				<span class="ui-table-control-disabled">
-					<img src="images/arrow-right.png">
+					<span class="arrow-right"></span>
 				</span>
 			{{/nextPageExists}}
 		</span>

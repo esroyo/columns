@@ -15,7 +15,7 @@ if (!window.console) {
 }
 
 (function($) {
-    $.fn.columns = function(options) {
+    $.fn['columns'] = function(options) {
         var val = [];
         var args = Array.prototype.slice.call(arguments, 1);
     
@@ -253,10 +253,13 @@ if (!window.console) {
                 $.each($this.schema, function(key, col) {
                     if (!col.hide) {
                         var th = {};
+                        if (!col.sortKey) {
+                            col.sortKey = col.key;
+                        }
                         
                         if ($.inArray(col.key,$this.sortableFields) === -1) {
                             th.notSortable = true;
-                        } else if ($this.sortBy === col.key) {
+                        } else if ($this.sortBy === col.sortKey) {
                             if ($this.reverse) {
                                 th.sortedDown = true;
                             } else {
@@ -267,6 +270,7 @@ if (!window.console) {
                         }
                         
                         th.key = col.key;
+                        th.sortKey = col.sortKey;
                         th.header = col.header;
                         
                         $this.thead.push(th);
@@ -528,7 +532,7 @@ if (!window.console) {
         sortBy: null,
         table: true,
         templateFile: null,
-        template: '<!-- Search Box: Only rendered while search is true --> {{#search}} <div class="ui-columns-search"> <input class="ui-table-search" placeholder="Search" type="text" name="query" data-columns-search="true" value="{{query}}" /> </div> {{/search}} <!-- Search Box: Only rendered while search is true --> <!-- Columns Table: Only rendered while table is true --> {{#table}} <div class="ui-columns-table" data-columns-table="true"> <table class="ui-table"> <!-- Columns Table Head: Headers have 4 possible states (sortable, notSortable, sortedUp, sortedDown) --> <thead> {{#headers}} {{#sortable}} <th class="ui-table-sortable" data-columns-sortby="{{key}}">{{header}}</th> {{/sortable}} {{#notSortable}} <th class="">{{header}}</th> {{/notSortable}} {{#sortedUp}} <th class="ui-table-sort-up ui-table-sortable" data-columns-sortby="{{key}}">{{header}} <span class="ui-arrow">&#x25B2;</span></th> {{/sortedUp}} {{#sortedDown}} <th class="ui-table-sort-down ui-table-sortable" data-columns-sortby="{{key}}">{{header}} <span class="ui-arrow">&#x25BC;</span></th> {{/sortedDown}} {{/headers}} </thead> <!-- Columns Table Head: Headers have 4 possible states (sortable, notSortable, sortedUp, sortedDown) --> <!-- Columns Table Body: Table columns are rendered outside of this template  --> <tbody> {{#rows}} {{{.}}} {{/rows}} </tbody> <!-- Columns Table Body: Table columns are rendered outside of this template  --> </table> <!-- Columns Controls  --> <div class="ui-table-footer"> <span class="ui-table-size">Show rows: {{{showRowsMenu}}}</span> <span class="ui-table-results">Results: <strong>{{resultRange.start}} &ndash; {{resultRange.end}}</strong> of <strong>{{tableTotal}}</strong> </span> <span class="ui-table-controls"> {{#prevPageExists}} <span class="ui-table-control-prev" data-columns-page="{{prevPage}}"> <img src="images/arrow-left.png"> </span> {{/prevPageExists}} {{^prevPageExists}} <span class="ui-table-control-disabled"> <img src="images/arrow-left.png"> </span> {{/prevPageExists}} {{#nextPageExists}} <span class="ui-table-control-next" data-columns-page="{{nextPage}}"> <img src="images/arrow-right.png"> </span> {{/nextPageExists}} {{^nextPageExists}} <span class="ui-table-control-disabled"> <img src="images/arrow-right.png"> </span> {{/nextPageExists}} </span> </div> <!-- Columns Controls  --> </div> {{/table}} <!-- Columns Table: Only rendered while table is true -->',
+        template: '<!-- Search Box: Only rendered while search is true --> {{#search}} <div class="ui-columns-search"> <input class="ui-table-search" placeholder="Search" type="text" name="query" data-columns-search="true" value="{{query}}" /> </div> {{/search}} <!-- Search Box: Only rendered while search is true --> <!-- Columns Table: Only rendered while table is true --> {{#table}} <div class="ui-columns-table" data-columns-table="true"> <table class="ui-table"> <!-- Columns Table Head: Headers have 4 possible states (sortable, notSortable, sortedUp, sortedDown) --> <thead> {{#headers}} {{#sortable}} <th class="ui-table-sortable" data-columns-sortby="{{sortKey}}">{{header}}</th> {{/sortable}} {{#notSortable}} <th class="">{{header}}</th> {{/notSortable}} {{#sortedUp}} <th class="ui-table-sort-up ui-table-sortable" data-columns-sortby="{{sortKey}}">{{header}} <span class="ui-arrow">&#x25B2;</span></th> {{/sortedUp}} {{#sortedDown}} <th class="ui-table-sort-down ui-table-sortable" data-columns-sortby="{{sortKey}}">{{header}} <span class="ui-arrow">&#x25BC;</span></th> {{/sortedDown}} {{/headers}} </thead> <!-- Columns Table Head: Headers have 4 possible states (sortable, notSortable, sortedUp, sortedDown) --> <!-- Columns Table Body: Table columns are rendered outside of this template  --> <tbody> {{#rows}} {{{.}}} {{/rows}} </tbody> <!-- Columns Table Body: Table columns are rendered outside of this template  --> </table> <!-- Columns Controls  --> <div class="ui-table-footer"> <span class="ui-table-size">Show rows: {{{showRowsMenu}}}</span> <span class="ui-table-results">Results: <strong>{{resultRange.start}} &ndash; {{resultRange.end}}</strong> of <strong>{{tableTotal}}</strong> </span> <span class="ui-table-controls"> {{#prevPageExists}} <span class="ui-table-control-prev" data-columns-page="{{prevPage}}"> <span class="arrow-left"></span> </span> {{/prevPageExists}} {{^prevPageExists}} <span class="ui-table-control-disabled"> <span class="arrow-left"></span> </span> {{/prevPageExists}} {{#nextPageExists}} <span class="ui-table-control-next" data-columns-page="{{nextPage}}"> <span class="arrow-right"></span> </span> {{/nextPageExists}} {{^nextPageExists}} <span class="ui-table-control-disabled"> <span class="arrow-right"></span> </span> {{/nextPageExists}} </span> </div> <!-- Columns Controls  --> </div> {{/table}} <!-- Columns Table: Only rendered while table is true -->',
 
         //functionality
         conditioning: true,
